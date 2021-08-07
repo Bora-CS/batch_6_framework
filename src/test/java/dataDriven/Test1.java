@@ -38,6 +38,7 @@ public class Test1 {
 	
 	@DataProvider(name="invalidData")
 	public Object[][] dataSet2() {
+		Object[][] calculation = {
 				{2,5},
 				{3,11},
 				{5,4}

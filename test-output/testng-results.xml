@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<<<<<<< HEAD
 <testng-results ignored="1" total="4" passed="3" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
@@ -41,6 +42,21 @@
           </reporter-output>
         </test-method> <!-- test2 -->
       </class> <!-- dataDriven.Test2 -->
+=======
+<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2021-08-07T19:53:47Z" name="Default suite" finished-at="2021-08-07T19:53:48Z" duration-ms="470">
+    <groups>
+    </groups>
+    <test started-at="2021-08-07T19:53:47Z" name="Default test" finished-at="2021-08-07T19:53:48Z" duration-ms="470">
+      <class name="utilityLibrary.ExcelReader">
+        <test-method signature="readExcel()[pri:0, instance:utilityLibrary.ExcelReader@4b2bac3f]" started-at="2021-08-07T19:53:47Z" name="readExcel" finished-at="2021-08-07T19:53:48Z" duration-ms="454" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- readExcel -->
+      </class> <!-- utilityLibrary.ExcelReader -->
+>>>>>>> main
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

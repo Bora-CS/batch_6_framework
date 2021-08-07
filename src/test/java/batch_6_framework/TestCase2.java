@@ -9,7 +9,7 @@ import utilityLibrary.BasePage;
 public class TestCase2 extends BasePage {
 
 	public void testGit() {
-		String name = "Github is done!!!!!!!";
+		String name = "nur";
 	}
 	
 	
@@ -78,6 +78,8 @@ public class TestCase2 extends BasePage {
 		AssertJUnit.assertEquals(messageFromUI, "invalid");
 
 //		dashboard.verifyPage();
+		
+		System.out.println("a");
 
 	}
 	
