@@ -78,6 +78,8 @@ public class TestCase2 extends BasePage {
 		AssertJUnit.assertEquals(messageFromUI, "invalid");
 
 //		dashboard.verifyPage();
+		
+		System.out.println("a");
 
 	}
 	
