@@ -3,11 +3,11 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="utilityLibrary.ExcelReader">
+      <class name="dataDriven.Test1">
         <methods>
-          <include name="readExcel"/>
+          <include name="test"/>
         </methods>
-      </class> <!-- utilityLibrary.ExcelReader -->
+      </class> <!-- dataDriven.Test1 -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
