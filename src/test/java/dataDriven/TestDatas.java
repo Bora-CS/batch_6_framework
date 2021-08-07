@@ -4,6 +4,8 @@ import java.util.HashMap;
 
 import org.testng.annotations.DataProvider;
 
+import utilityLibrary.ExcelReader;
+
 public class TestDatas {
 	
 	
@@ -45,6 +47,22 @@ public class TestDatas {
 		personInfos[0] = info;
 		personInfos[1] = info2;
 		personInfos[2] = info3;
+		
+		return personInfos;
+	}
+	
+	
+	@DataProvider(name = "personInfo")
+	public Object[] dataSet3(){
+		
+		Object[] personInfos = new Object[3];
+		
+		ExcelReader er = new ExcelReader();
+		
+		personInfos[0] =  er.readTestData(1);
+		personInfos[1] =  er.readTestData(2);
+		personInfos[2] =  er.readTestData(3);
+
 		
 		return personInfos;
 	}
