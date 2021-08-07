@@ -9,7 +9,7 @@ import utilityLibrary.BasePage;
 public class TestCase2 extends BasePage {
 
 	public void testGit() {
-		
+		String name = "nur";
 	}
 	
 	
