@@ -1,20 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Failed suite [Sanity]" guice-stage="DEVELOPMENT">
-  <test thread-count="5" name="Test(failed)">
-    <groups>
-      <run>
-        <exclude name="regression"/>
-      </run>
-    </groups>
+<suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
+  <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="batch_6_framework.TestCase2">
+      <class name="dataDriven.Test2">
         <methods>
-          <include name="startTest"/>
-          <include name="CreateUser"/>
-          <include name="endTest"/>
+          <include name="test"/>
         </methods>
-      </class> <!-- batch_6_framework.TestCase2 -->
+      </class> <!-- dataDriven.Test2 -->
     </classes>
-  </test> <!-- Test(failed) -->
-</suite> <!-- Failed suite [Sanity] -->
+  </test> <!-- Default test(failed) -->
+</suite> <!-- Failed suite [Default suite] -->
