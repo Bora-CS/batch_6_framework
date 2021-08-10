@@ -11,15 +11,12 @@ import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-import org.testng.annotations.Test;
-
-import bsh.org.objectweb.asm.Type;
 
 public class ExcelReader {
 
 	String personInfoFile = "src/test/resources/PersonInfo_DataFile.xlsx";
 
-	public HashMap<String, String> readTestData(int rowIndex) {
+	public HashMap<String, String> readTestData(String sheetName, int rowIndex) {
 
 		HashMap<String, String> personInfo = new HashMap<>();
 		try {
@@ -28,7 +25,7 @@ public class ExcelReader {
 
 			XSSFWorkbook book = new XSSFWorkbook(fis);
 
-			XSSFSheet userInfo = book.getSheet("userName");
+			XSSFSheet userInfo = book.getSheet(sheetName); //"userName"
 
 			XSSFRow firstRow = userInfo.getRow(0);
 			int index = 0;
@@ -39,10 +36,48 @@ public class ExcelReader {
 				index++;
 			}
 
+			book.close();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		return personInfo;
+	}
+	
+
+	public HashMap<String, String> readTestData(String sheetName, String key) {
+
+		HashMap<String, String> dataMap = new HashMap<>();
+		try {
+			File f = new File(personInfoFile);
+			FileInputStream fis = new FileInputStream(f);
+
+			XSSFWorkbook book = new XSSFWorkbook(fis);
+
+			XSSFSheet Sheet = book.getSheet(sheetName);
+			
+			int rowIndex=-1;
+			for (int i = 0; i <= Sheet.getLastRowNum(); i++) {
+
+				String currentkey = Sheet.getRow(i).getCell(0).getStringCellValue();
+				if(currentkey.equalsIgnoreCase(key)) {
+					rowIndex = i;
+					break;
+				}
+			}
+
+			int index = 0;
+			for (Cell cell : Sheet.getRow(0)) {
+				String value = Sheet.getRow(rowIndex).getCell(index).getStringCellValue();
+
+				dataMap.put(cell.getStringCellValue(), value);
+				index++;
+			}
+
+			book.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return dataMap;
 	}
 
 	public void readExcel() {
@@ -86,6 +121,7 @@ public class ExcelReader {
 
 			}
 
+			workbook.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

@@ -4,6 +4,7 @@ import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
@@ -16,45 +17,58 @@ import boraPages.LoginPage;
 public class BasePage {
 
 	static WebDriver driver;
-	public static SeleniumFunctionalMethod lib;
+	private String url = "https://boratech.herokuapp.com/";
 	
+	
+	public static SeleniumFunctionalMethod lib;
+
 	public static HomePage home = new HomePage();
 	public static LoginPage login = new LoginPage();
 	public static Dashboard dashboard = new Dashboard();
 	public static ExpirencePage expirence = new ExpirencePage();
 	public static EducationPage edu = new EducationPage();
-	
+
 	@BeforeMethod
-	public static void startTest() {
-		System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver");
-
-		driver = new ChromeDriver();
-		String url = "https://boratech.herokuapp.com/";
-
-		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+	public void startTest() {
+		setUpDriver();
 		
+		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+
 		lib = new SeleniumFunctionalMethod(driver);
 
 		lib.openUrl(url);
 	}
 
 	@AfterMethod
-	public static void endTest() {
-		waitFor(4);
-		driver.close();
-		driver.quit();
-	}
-	
-	
-	public static void waitFor(int second) {
-		try {
-			Thread.sleep(second * 1000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
+	public void endTest(ITestResult result) {
+		if (result.getStatus() == ITestResult.FAILURE) {
+			lib.takeScreenShot(result.getName());
 		}
+		closeDriver();
 	}
 
 	
 	
 	
+	
+	
+	private void closeDriver() {
+		driver.close();
+		driver.quit();
+	}
+
+	private void setUpDriver() {
+		String os = System.getProperty("os.name");
+		String driverPath = "";
+		if (os.toLowerCase().startsWith("mac")) {
+			driverPath = "src/main/resources/chromedriver91";
+		} else if (os.toLowerCase().startsWith("windows")) {
+			driverPath = "src/main/resources/chromedriver91.exe";
+		}
+
+		System.setProperty("webdriver.chrome.driver", driverPath);
+
+		driver = new ChromeDriver();
+	}
+
 }

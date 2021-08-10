@@ -59,9 +59,9 @@ public class TestDatas {
 		
 		ExcelReader er = new ExcelReader();
 		
-		personInfos[0] =  er.readTestData(1);
-		personInfos[1] =  er.readTestData(2);
-		personInfos[2] =  er.readTestData(3);
+		personInfos[0] =  er.readTestData("userName",1);
+		personInfos[1] =  er.readTestData("userName",2);
+		personInfos[2] =  er.readTestData("userName",3);
 
 		
 		return personInfos;

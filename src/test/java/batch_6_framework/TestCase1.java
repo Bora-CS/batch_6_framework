@@ -1,7 +1,6 @@
 package batch_6_framework;
 
 import org.testng.annotations.Test;
-import org.testng.annotations.Test;
 
 import projectData.BoraTech_TestData;
 import utilityLibrary.BasePage;
@@ -10,7 +9,6 @@ public class TestCase1 extends BasePage {
 
 	public static void main(String[] args) {
 
-		startTest();
 
 		home.clickOnLoginButton();
 
@@ -28,7 +26,6 @@ public class TestCase1 extends BasePage {
 		// add Education Page
 		edu.addEducation();
 
-		endTest();
 	}
 
 	@Test
